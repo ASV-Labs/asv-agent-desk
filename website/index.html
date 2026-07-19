@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="ASV Agent Desk runs the real Grok Build fullscreen TUI and orchestrates concurrent sessions, attention, worktrees, diffs, browser tabs, and local history around it."
+    />
+    <meta name="theme-color" content="#0e1013" />
+    <meta property="og:title" content="ASV Agent Desk" />
+    <meta
+      property="og:description"
+      content="Run the real Grok Build TUI. Orchestrate the work around it."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://asv-labs.github.io/asv-agent-desk/"
+    />
+    <link rel="icon" href="./app-glyph.svg" type="image/svg+xml" />
+    <title>ASV Agent Desk — the real TUI, orchestrated</title>
+    <script>
+      document.documentElement.classList.remove('no-js')
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to the product</a>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="ASV Agent Desk home">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <rect x="2.5" y="3.5" width="27" height="25" rx="4" />
+          <path d="M11 4v24M15.5 12l4 4-4 4M21.5 20h4" />
+        </svg>
+        <span>ASV Agent Desk</span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="#proof">Product</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#setup">Setup</a>
+        <a
+          class="nav-source"
+          href="https://github.com/ASV-Labs/asv-agent-desk"
+          data-external
+        >Source <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">OPEN-SOURCE macOS AGENT WORKSPACE</p>
+          <h1 id="hero-title">
+            Run the real Grok Build TUI.
+            <span>Orchestrate the work around it.</span>
+          </h1>
+          <p class="hero-lede">
+            The fullscreen terminal stays authoritative. ASV Agent Desk adds concurrent
+            sessions, hook-driven attention, worktree lineage, diffs, browser tabs, and local
+            history—without scraping a single terminal line.
+          </p>
+          <div class="command-line" aria-label="Clone command">
+            <span class="prompt" aria-hidden="true">$</span>
+            <code>git clone https://github.com/ASV-Labs/asv-agent-desk.git</code>
+            <button
+              class="copy-button"
+              type="button"
+              data-copy="git clone https://github.com/ASV-Labs/asv-agent-desk.git"
+            >
+              Copy
+            </button>
+          </div>
+          <div class="hero-actions">
+            <a class="primary-link" href="https://github.com/ASV-Labs/asv-agent-desk">
+              View source
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a class="text-link" href="#setup">Set up with OAuth</a>
+          </div>
+        </div>
+
+        <figure class="hero-proof">
+          <div class="capture-frame">
+            <div class="capture-bar">
+              <span>captured from product</span>
+              <span>public release candidate</span>
+            </div>
+            <img
+              src="./captures/overview.jpg"
+              width="1440"
+              height="900"
+              alt="ASV Agent Desk running concurrent sessions with the attention rail and side panel visible"
+              fetchpriority="high"
+            />
+          </div>
+          <figcaption>
+            Real Electron surface. Real xterm session. Disposable demo repository.
+          </figcaption>
+        </figure>
+      </section>
+
+      <aside class="honesty-band" aria-label="Distribution status">
+        <span class="honesty-signal" aria-hidden="true"></span>
+        <strong>Source available now.</strong>
+        <span>A signed and notarized macOS build is pending Apple Developer Program enrollment.</span>
+        <a href="#distribution">What that means</a>
+      </aside>
+
+      <section class="proof-shell" id="proof" aria-labelledby="proof-title">
+        <div class="proof-intro">
+          <p class="eyebrow">PRODUCT WALKTHROUGH / 01–05</p>
+          <h2 id="proof-title">A terminal core. Five side channels that do not impersonate it.</h2>
+          <p>
+            Every state outside the terminal comes from Grok hooks, Grok-owned files, or git.
+            The UI does not guess what the agent is doing from its output.
+          </p>
+        </div>
+
+        <div class="proof-layout">
+          <nav class="chapter-nav" aria-label="Product walkthrough">
+            <a href="#chapter-01" data-chapter-link="chapter-01">
+              <span>01</span> Fullscreen TUI
+            </a>
+            <a href="#chapter-02" data-chapter-link="chapter-02">
+              <span>02</span> Attention
+            </a>
+            <a href="#chapter-03" data-chapter-link="chapter-03">
+              <span>03</span> Worktree forks
+            </a>
+            <a href="#chapter-04" data-chapter-link="chapter-04">
+              <span>04</span> Diffs + browser
+            </a>
+            <a href="#chapter-05" data-chapter-link="chapter-05">
+              <span>05</span> Local history
+            </a>
+          </nav>
+
+          <div class="chapters">
+            <article class="chapter" id="chapter-01" data-chapter>
+              <header>
+                <span class="chapter-index">01</span>
+                <div>
+                  <p class="chapter-label">RAW PTY BYTES</p>
+                  <h3>The actual alternate screen, not a chat-shaped facsimile.</h3>
+                </div>
+              </header>
+              <p class="chapter-copy">
+                Grok Build runs live inside `node-pty` and xterm.js. Mouse reports, plan mode,
+                subagent views, and fullscreen redraws remain intact. Byte acknowledgements
+                pause the PTY when the renderer falls behind.
+              </p>
+              <figure class="proof-capture">
+                <img
+                  src="./captures/terminal.jpg"
+                  width="1280"
+                  height="720"
+                  loading="lazy"
+                  alt="The real Grok Build fullscreen TUI inside ASV Agent Desk"
+                />
+                <figcaption>
+                  <span>pty.onData → term.write</span>
+                  <a href="https://github.com/ASV-Labs/asv-agent-desk/blob/main/docs/ARCHITECTURE.md#terminal-boundary">Read the terminal boundary ↗</a>
+                </figcaption>
+              </figure>
+            </article>
+
+            <article class="chapter" id="chapter-02" data-chapter>
+              <header>
+                <span class="chapter-index">02</span>
+                <div>
+                  <p class="chapter-label">HOOK-DRIVEN ATTENTION</p>
+                  <h3>Know who is working—and who has been waiting.</h3>
+                </div>
+              </header>
+              <p class="chapter-copy">
+                Passive events arrive through a bounded personal command hook over a Unix
+                socket. The rail distinguishes working, needs-you, failed, and exited states,
+                then routes `⌘↩` to the longest-waiting session.
+              </p>
+              <figure class="proof-capture proof-capture--rail">
+                <img
+                  src="./captures/attention.jpg"
+                  width="1280"
+                  height="420"
+                  loading="lazy"
+                  alt="Session rail showing working and needs-you attention states"
+                />
+                <figcaption>
+                  <span>hooks → state machine → rail</span>
+                  <a href="https://github.com/ASV-Labs/asv-agent-desk/blob/main/docs/ARCHITECTURE.md#hook-transport">Inspect the hook transport ↗</a>
+                </figcaption>
+              </figure>
+            </article>
+
+            <article class="chapter" id="chapter-03" data-chapter>
+              <header>
+                <span class="chapter-index">03</span>
+                <div>
+                  <p class="chapter-label">CONCURRENT + ISOLATED</p>
+                  <h3>Fork the work, not the terminal illusion.</h3>
+                </div>
+              </header>
+              <p class="chapter-copy">
+                Main owns every live PTY. Forking launches `grok -w`, records the parent edge,
+                and learns the checkout from the first hook event. Parent, fork, and
+                fork-of-fork run against genuinely separate git worktrees.
+              </p>
+              <figure class="proof-capture proof-capture--lineage">
+                <img
+                  src="./captures/lineage.jpg"
+                  width="900"
+                  height="760"
+                  loading="lazy"
+                  alt="Sidebar lineage with a parent session, fork, and nested fork"
+                />
+                <figcaption>
+                  <span>parent → fork 1 → fork 1.1</span>
+                  <a href="https://github.com/ASV-Labs/asv-agent-desk/blob/main/docs/ARCHITECTURE.md#worktrees-and-lineage">Follow the lineage model ↗</a>
+                </figcaption>
+              </figure>
+            </article>
+
+            <article class="chapter" id="chapter-04" data-chapter>
+              <header>
+                <span class="chapter-index">04</span>
+                <div>
+                  <p class="chapter-label">READ-ONLY PROOF SURFACES</p>
+                  <h3>Working-tree evidence and real web pages beside the TUI.</h3>
+                </div>
+              </header>
+              <p class="chapter-copy">
+                Git supplies exact diffs without staging or checkout. Browser tabs are
+                sandboxed native `WebContentsView` instances with their own partition and
+                main-owned lifecycle.
+              </p>
+              <figure class="proof-capture">
+                <img
+                  src="./captures/panel.jpg"
+                  width="1280"
+                  height="720"
+                  loading="lazy"
+                  alt="ASV Agent Desk diff panel and sandboxed browser tab surface"
+                />
+                <figcaption>
+                  <span>git read-only / browser sandboxed</span>
+                  <a href="https://github.com/ASV-Labs/asv-agent-desk/blob/main/docs/ARCHITECTURE.md#browser-isolation">Review browser isolation ↗</a>
+                </figcaption>
+              </figure>
+            </article>
+
+            <article class="chapter" id="chapter-05" data-chapter>
+              <header>
+                <span class="chapter-index">05</span>
+                <div>
+                  <p class="chapter-label">LOCAL-FIRST HISTORY</p>
+                  <h3>Your sessions stay Grok's sessions.</h3>
+                </div>
+              </header>
+              <p class="chapter-copy">
+                The sidebar reads real summaries under `GROK_HOME`, resumes stored session IDs,
+                and merges live state without writing to Grok's history. One resolver keeps
+                sessions, hooks, worktrees, and watchers aligned.
+              </p>
+              <figure class="proof-capture proof-capture--history">
+                <img
+                  src="./captures/history.jpg"
+                  width="920"
+                  height="760"
+                  loading="lazy"
+                  alt="Local session history grouped by project with readable task titles"
+                />
+                <figcaption>
+                  <span>GROK_HOME / read-only</span>
+                  <a href="https://github.com/ASV-Labs/asv-agent-desk/blob/main/docs/ARCHITECTURE.md#data-ownership">See data ownership ↗</a>
+                </figcaption>
+              </figure>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="architecture" id="architecture" aria-labelledby="architecture-title">
+        <div class="section-heading">
+          <p class="eyebrow">ARCHITECTURE PROOF</p>
+          <h2 id="architecture-title">The TUI stays in the center. Evidence moves around it.</h2>
+          <p>
+            Blue traces are bytes. White traces are state. Nothing travels from terminal text
+            into the desktop chrome.
+          </p>
+        </div>
+
+        <div class="architecture-stage">
+          <svg
+            class="architecture-map"
+            viewBox="0 0 1200 650"
+            role="img"
+            aria-labelledby="map-title map-desc"
+          >
+            <title id="map-title">ASV Agent Desk architecture map</title>
+            <desc id="map-desc">
+              Raw bytes move between the Grok Build TUI, SessionManager, and xterm. Hook events
+              move to the attention rail. Session files and git move to the sidebar and diffs.
+            </desc>
+            <g class="map-grid" aria-hidden="true">
+              <path d="M0 130H1200M0 260H1200M0 390H1200M0 520H1200" />
+              <path d="M200 0V650M400 0V650M600 0V650M800 0V650M1000 0V650" />
+            </g>
+
+            <g class="map-node map-node--core">
+              <rect x="442" y="208" width="316" height="230" rx="20" />
+              <text x="478" y="259" class="map-label">TERMINAL CORE</text>
+              <text x="478" y="314" class="map-title">Grok Build TUI</text>
+              <path d="M485 361l30 25-30 25M535 411h66" />
+              <text x="478" y="420" class="map-meta">xterm.js / alternate screen</text>
+            </g>
+
+            <g class="map-node">
+              <rect x="60" y="72" width="270" height="120" rx="15" />
+              <text x="88" y="113" class="map-label">MAIN</text>
+              <text x="88" y="151" class="map-title-sm">SessionManager</text>
+              <text x="88" y="176" class="map-meta">PTY owner · flow control</text>
+            </g>
+            <g class="map-node">
+              <rect x="60" y="464" width="270" height="120" rx="15" />
+              <text x="88" y="505" class="map-label">PASSIVE EVENTS</text>
+              <text x="88" y="543" class="map-title-sm">Unix hook bridge</text>
+              <text x="88" y="568" class="map-meta">always exit 0</text>
+            </g>
+            <g class="map-node">
+              <rect x="870" y="72" width="270" height="120" rx="15" />
+              <text x="898" y="113" class="map-label">RENDERER</text>
+              <text x="898" y="151" class="map-title-sm">Attention rail</text>
+              <text x="898" y="176" class="map-meta">working · waiting · failed</text>
+            </g>
+            <g class="map-node">
+              <rect x="870" y="464" width="270" height="120" rx="15" />
+              <text x="898" y="505" class="map-label">READ-ONLY</text>
+              <text x="898" y="543" class="map-title-sm">Sessions + git</text>
+              <text x="898" y="568" class="map-meta">sidebar · lineage · diffs</text>
+            </g>
+
+            <g class="trace trace--bytes" aria-hidden="true">
+              <path pathLength="1" d="M330 132C405 132 390 270 442 270" />
+              <path pathLength="1" d="M442 342C385 342 400 169 330 169" />
+            </g>
+            <g class="trace trace--events" aria-hidden="true">
+              <path pathLength="1" d="M330 524C650 524 560 132 870 132" />
+              <path pathLength="1" d="M870 524C790 524 820 398 758 398" />
+            </g>
+          </svg>
+          <div class="map-legend" aria-hidden="true">
+            <span><i class="legend-byte"></i> raw byte flow</span>
+            <span><i class="legend-event"></i> event and file state</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="setup" id="setup" aria-labelledby="setup-title">
+        <div class="section-heading">
+          <p class="eyebrow">OAUTH-FIRST SETUP</p>
+          <h2 id="setup-title">Three steps. Credentials stay with the official CLI.</h2>
+        </div>
+
+        <ol class="setup-spine">
+          <li>
+            <span class="setup-index">01</span>
+            <div>
+              <h3>Install Grok Build</h3>
+              <p>Use the current official installer and review xAI's documentation.</p>
+            </div>
+            <div class="mini-command">
+              <code>curl -fsSL https://x.ai/cli/install.sh | bash</code>
+              <button
+                type="button"
+                data-copy="curl -fsSL https://x.ai/cli/install.sh | bash"
+              >Copy</button>
+            </div>
+          </li>
+          <li>
+            <span class="setup-index">02</span>
+            <div>
+              <h3>Clone and launch</h3>
+              <p>Install from source while signed distribution waits on Apple enrollment.</p>
+            </div>
+            <div class="mini-command">
+              <code>npm ci &amp;&amp; npm run dev</code>
+              <button type="button" data-copy="npm ci && npm run dev">Copy</button>
+            </div>
+          </li>
+          <li>
+            <span class="setup-index">03</span>
+            <div>
+              <h3>Continue with OAuth</h3>
+              <p>
+                ASV Agent Desk starts `grok --oauth`. Grok Build opens the browser, authenticates,
+                and stores its own credentials.
+              </p>
+            </div>
+            <a href="https://docs.x.ai/build/overview">Official setup guide ↗</a>
+          </li>
+        </ol>
+      </section>
+
+      <section class="distribution" id="distribution" aria-labelledby="distribution-title">
+        <div>
+          <p class="eyebrow">DISTRIBUTION STATUS</p>
+          <h2 id="distribution-title">Source is the release until macOS trust is real.</h2>
+        </div>
+        <div class="distribution-copy">
+          <p>
+            A local DMG can be built today. That does not make it safe to distribute. The public
+            binary waits for a Developer ID signature, notarization, stapling, Gatekeeper
+            acceptance, and a quarantined clean-install test.
+          </p>
+          <p>
+            There is no official DMG or GitHub Release asset. Binaries from other sources should
+            not be trusted.
+          </p>
+          <a href="https://github.com/ASV-Labs/asv-agent-desk/blob/main/docs/RELEASING.md">
+            Read the release gate ↗
+          </a>
+        </div>
+      </section>
+
+      <section class="open-source" aria-labelledby="open-title">
+        <div class="open-mark" aria-hidden="true">
+          <span>ASV</span>
+          <span>LABS</span>
+        </div>
+        <div>
+          <p class="eyebrow">OPEN SOURCE / MIT</p>
+          <h2 id="open-title">Inspect the boundaries. Improve the desk.</h2>
+          <p>
+            Start with architecture, run the public audit, and keep the real terminal
+            authoritative.
+          </p>
+          <div class="open-links">
+            <a class="primary-link" href="https://github.com/ASV-Labs/asv-agent-desk">
+              Clone on GitHub <span aria-hidden="true">↗</span>
+            </a>
+            <a href="https://github.com/ASV-Labs/asv-agent-desk/blob/main/CONTRIBUTING.md">
+              Contribution guide
+            </a>
+            <a href="https://github.com/ASV-Labs/asv-agent-desk/blob/main/docs/ARCHITECTURE.md">
+              Architecture
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="brand footer-brand">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <rect x="2.5" y="3.5" width="27" height="25" rx="4" />
+          <path d="M11 4v24M15.5 12l4 4-4 4M21.5 20h4" />
+        </svg>
+        <span>ASV Agent Desk</span>
+      </div>
+      <p>
+        Independent ASV Labs project. Not affiliated with, sponsored by, or endorsed by X.AI
+        LLC. Grok, Grok Build, xAI, and their marks are owned by X.AI LLC.
+      </p>
+      <div>
+        <a href="https://github.com/ASV-Labs/asv-agent-desk">GitHub</a>
+        <a href="https://github.com/ASV-Labs/asv-agent-desk/blob/main/LICENSE">MIT</a>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </footer>
+
+    <noscript>
+      <p class="noscript-note">
+        JavaScript is optional. Copy buttons and active chapter highlighting are unavailable;
+        all product, architecture, setup, and source content remains readable.
+      </p>
+    </noscript>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
+

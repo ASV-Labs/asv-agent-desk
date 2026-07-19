@@ -1,0 +1,42 @@
+# Dependencies and generated output
+node_modules/
+out/
+dist/
+website-dist/
+.vite/
+coverage/
+*.tsbuildinfo
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.cer
+*.crt
+*.mobileprovision
+*.provisionprofile
+*.app-specific-password
+auth.json
+
+# Private evidence and local release material
+artifacts/
+reports/
+PHASE*_REPORT.md
+PHASE*_HANDOFF_PROMPT.md
+SIGNING.md
+grok-desk-plan.md
+*.ips
+*.log
+*.dmg
+*.dmg.blockmap
+
+# Editor and operating-system state
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/

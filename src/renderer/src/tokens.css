@@ -1,0 +1,72 @@
+/**
+ * Design tokens.
+ *
+ * Three ideas hold this together:
+ *
+ * 1. **Surfaces are layered, not flat.** A single background made everything
+ *    read as one undifferentiated wash. The canvas is now the darkest thing on
+ *    screen and panels sit above it, so the eye can tell regions apart without
+ *    needing heavy borders to fence them off.
+ *
+ * 2. **Amber means attention and nothing else.** It was decorating session ids
+ *    and status text, then — after a first pass at this — still doing double
+ *    duty as the active-tab underline, focus ring, selection colour and
+ *    splitter hover. An amber "this tab is selected" sitting beside an amber
+ *    "this agent is blocked on you" is the same failure in a subtler form. So
+ *    selection now has its own neutral-blue token, and amber appears only when
+ *    something wants you.
+ *
+ * 3. **Borders are hairlines.** The 4–5px splitters read as walls between
+ *    rooms rather than seams in one surface.
+ */
+
+:root {
+  /* Surfaces, darkest to lightest. */
+  --canvas: #0e1013;
+  --bg: #131519;
+  --chrome: #17191f;
+  --sidebar: #15171c;
+  --raised: #1c1f26;
+  --hover: #1e222a;
+  --active: #262b34;
+
+  /* Hairlines. */
+  --border: #23272f;
+  --border-strong: #2e343e;
+
+  /* Text, in descending prominence. */
+  --text: #e3e7ec;
+  --text-dim: #9aa4b1;
+  --muted: #6b7684;
+  --faint: #4a525d;
+
+  /* Semantic. */
+  /* Attention only: a session waiting on you. Nothing else may use this. */
+  --accent: #e8b339;
+  /* Selection and focus: active tab, focus ring, splitter hover. */
+  --select: #5aa2f0;
+  --info: #5aa2f0;
+  --ok: #5cb367;
+  --danger: #e5675f;
+
+  --font-ui:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, monospace;
+
+  /* Type scale. Four sizes, used consistently, is enough for an app this size. */
+  --text-xs: 10px;
+  --text-sm: 11px;
+  --text-base: 12px;
+  --text-md: 13px;
+
+  --radius: 6px;
+  --radius-lg: 8px;
+
+  --titlebar-h: 42px;
+  --rail-h: 48px;
+  /* Clearance for the macOS traffic lights under titleBarStyle: hiddenInset. */
+  --traffic-lights: 82px;
+
+  --ease: cubic-bezier(0.2, 0, 0.2, 1);
+  --fast: 110ms;
+}

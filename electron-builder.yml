@@ -1,0 +1,45 @@
+appId: com.asvlabs.agentdesk
+productName: ASV Agent Desk
+directories:
+  output: dist
+  buildResources: build
+
+files:
+  - out/**/*
+  - package.json
+
+# node-pty's native artefacts must live outside the asar so they can be signed
+# individually — an unsigned binary anywhere in the bundle fails notarization
+# with a famously unhelpful log.
+#
+# Scoped to build/Release rather than the whole package: that directory holds
+# both pty.node AND spawn-helper (macOS needs the latter, and it must stay
+# executable), while excluding node-pty's Windows sources and foreign-platform
+# prebuilds. Those were shipping in the bundle and needlessly widening the set
+# of native files the notary service inspects.
+#
+# NOTE: re-verify with `npm run dist` after changing this — a missing
+# spawn-helper fails only at runtime in the packaged app, not at build time.
+asarUnpack:
+  - "node_modules/node-pty/build/Release/**"
+
+mac:
+  category: public.app-category.developer-tools
+  # 1024px source; electron-builder generates the .icns. The design is the
+  # app's own layout — sidebar, terminal, panel — rather than Grok's mark,
+  # which is xAI's trademark and not ours to ship as an application identity.
+  icon: build/icon.png
+  target:
+    - target: dmg
+      arch: [arm64]
+  hardenedRuntime: true
+  gatekeeperAssess: false
+  entitlements: build/entitlements.mac.plist
+  entitlementsInherit: build/entitlements.mac.plist
+  # Requires a "Developer ID Application" cert in the login keychain, plus
+  # APPLE_ID, APPLE_APP_SPECIFIC_PASSWORD and APPLE_TEAM_ID in the environment.
+  # Set CSC_IDENTITY_AUTO_DISCOVERY=false to force an unsigned local build.
+  notarize: true
+
+dmg:
+  artifactName: ASV-Agent-Desk-${version}-${arch}.dmg

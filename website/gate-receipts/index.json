@@ -1,0 +1,830 @@
+{
+  "site_type": "software-product",
+  "gate_entry": {
+    "atlas_id": "style.saas-technical-product",
+    "primary_composition": "product-walkthrough",
+    "composition_options": [
+      "product-walkthrough",
+      "annotated-proof",
+      "interactive-demo",
+      "comparison-flow"
+    ],
+    "structural_signatures": {
+      "product-walkthrough": {
+        "must": [
+          "stepped spine where each step reveals a real per-step artifact (commit group, rule hit, drafted output - not decoration)",
+          "the walkthrough is numbered or sequenced (1.0-5.0, 01-05, step numbers) so the page reads as a system map, not a pile"
+        ],
+        "must_not": [
+          "single-static-image-standing-for-all-steps"
+        ],
+        "evidence": "corpus-internal, ADR-0002 fix 4: 2026-07-09 mock-build gate review (section iii) - the walkthrough's media was one fabricated static panel used twice; no step revealed an artifact. Award corroboration 2026-07-10: Jeton's 01-05 flow with Restart control (Product Honors Jan 2025 + SOTD Jan 27 2025, verified, r1-regulated.md); Linear's 1.0-5.0 FIG-labeled walkthrough corroborates (unverified site - corroboration only, never sole evidence; r1-software-product.md)"
+      },
+      "annotated-proof": {
+        "must": [
+          "every capability section shows the actual product surface at least once (screenshot, SVG export, runnable code sample, or DOM recreation)",
+          "every capability claim links to documentation or a deeper page"
+        ],
+        "must_not": [
+          "icon-above-one-liner feature grid",
+          "sourceless stat or KPI figure"
+        ],
+        "evidence": "Trunk: per-feature product SVGs + docs.trunk.io link per claim (Awwwards Product Honors Feb 2024, verified, r1-software-product.md); Anime.js: 8 capability sections each with a runnable code block + doc-linked bullets, closing bundle-size table of real KB numbers (Product Honors Apr 2025 + SOTM May 2025, verified, r1-software-product.md); Osmo: real resource feed + 2880x1800 dashboard shot as proof media (Product Honors Jan 2025 + SOTD Feb 08 2025, verified, r1-software-product.md)"
+      },
+      "interactive-demo": {
+        "must": [
+          "the demo's content and controls exist in initial HTML - with JS absent the page still renders a real static product state, not an empty shell"
+        ],
+        "must_not": [
+          "canvas/JS-only demo whose content is absent from the DOM"
+        ],
+        "evidence": "Madbox: Three.js/GLSL build with ALL narrative copy server-rendered (SOTD Oct 08 2021, verified, r2-game-playful-interactive.md); Bruno Simon: canvas world but the complete UI/controls/credits layer is semantic HTML (SOTM Nov 2019, verified; fetched site is the 2025 rebuild, labeled, r2-game-playful-interactive.md); Linear's no-JS-readable DOM product recreation corroborates (unverified site, r1-software-product.md). Counter-cases: telescope.fyi and hatom.com (both awarded-verified) fetched as empty JS shells - the failure mode this signature excludes (r1-software-product.md fetch failures; r1-summary.md method finding)"
+      },
+      "comparison-flow": {
+        "must": [],
+        "must_not": [],
+        "evidence": "pending - no comparison-flow specimen among the 2026-07-10 award-study sites (r1-software-product.md); the slot stays empty rather than stretched (ADR-0003)"
+      }
+    },
+    "visual_language": "precise, structured, confident, high-contrast details",
+    "tones": [
+      "precise",
+      "confident",
+      "structured",
+      "trustworthy"
+    ],
+    "card_budget": 1,
+    "card_note": "Cards only for a genuine pricing set; explain capability with annotated proof and non-card layouts, never an icon-feature grid.",
+    "use_patterns": [
+      "composition.non-card-content-layouts",
+      "motion.svg-line-drawing"
+    ],
+    "avoid": [
+      "fake-dashboard",
+      "icon-feature-grid",
+      "generic-gradient",
+      "equal-height-card-wall"
+    ]
+  },
+  "card_policy": {
+    "allowed_when": [
+      "catalog",
+      "products",
+      "articles",
+      "resources",
+      "search-results",
+      "pricing-set",
+      "repeated-objects",
+      "dashboard-compare"
+    ],
+    "weak_for": [
+      "storytelling",
+      "lessons",
+      "brand-intro",
+      "immersive-home",
+      "step-by-step",
+      "process-explanation",
+      "narrative",
+      "emotional-positioning"
+    ],
+    "card_budget_meaning": "Max number of equal-card / card-wall sections allowed on a typical page for this site type. 0 = no card walls (use editorial/proof/timeline compositions); 1 = one justified card section (e.g. pricing or a real catalog)."
+  },
+  "multi_brand_batch_rule": {
+    "added": "2026-07-10 per ADR-0002 fix 5c (WDI-010 rev 1.1, WDI-001 rev 1.2)",
+    "rule": "Pages for distinct brands/products built in one batch must not share a theme layer: palette tokens and type tokens (font stacks, type scale) must carry per-brand decisions, not merely different hero imagery. Zero per-brand overrides across declared brands is a hard fail. Shared infrastructure (reset, spacing primitives) is legitimate; shared identity is not.",
+    "first_evidence": "2026-07-09 mock build: three declared brands, one 823-line stylesheet, 0 lines of per-page palette/typography overrides (gate review section ii)",
+    "maps_to": "WDI-011 HF-9c"
+  },
+  "cross_type_primitives": {
+    "_doc": "Added 2026-07-10 per ADR-0003 (award-site research integration). Primitives are compositions any site type may adopt alongside its own options; they carry signatures exactly like composition options and are printed by design_gate.py with every gate entry. They replace generic defaults - they never license them, and they never change a site type's card budget.",
+    "numbered-spine": {
+      "description": "An ordered, visibly numbered sequence (steps, episodes, FAQ entries, culture editorial, testimonials) as the list structure - the award-tier replacement for card walls on narrative and sequence content. Per-type variants observed: episode-table (learning-program), process-sequence (regulated), countdown editorial (03->02->01).",
+      "must": [
+        "every unit carries a visible index (01..., 1.0..., 03->01) plus its own real content (criteria, duration, artifact, answer) - numbering as information architecture, not ornament"
+      ],
+      "must_not": [
+        "a card grid standing for a sequence",
+        "numbering pasted onto identical boxes (a metronome with digits)"
+      ],
+      "budget_note": "Spine rows are not equal cards; a numbered spine does not spend the card budget.",
+      "evidence": "Jeton 01-05 flow (SOTD Jan 27 2025, verified); Hafnia 03->02->01 culture editorial + 3-step recruitment (HM Feb 09 2024, verified); TATE 01-09 FAQ (HM Nov 08 2022, verified); DES 17-row episode table (SOTD Jun 25 2024, verified); The Online School 01-07 course accordion + 01-07 numbered testimonials + a-f audience keys (HM Jul 18 2023, verified); Don't Board Me steps 01-04 + numbered testimonial marquee 01-10 (SOTD Mar 11 2024, verified); KHUFU'S numbered editorial panels 03/04/08 (HM May 07 2026, verified); Linear 1.0-5.0 corroborates (unverified). Card grids for narrative content: zero instances in 17 fetched R1 pages - r1-summary.md finding 1, r2-summary.md finding 2"
+    },
+    "honesty-band": {
+      "description": "Operational truth designed into the page: sold-out notice with restock schedule, split service hours, server-offline notices, entry procedures, price arithmetic, discount rules. Award-tier pages design their constraints instead of hiding them.",
+      "must": [
+        "the constraint is stated with its mechanics (schedule, date, rule, arithmetic) in designed type - not hidden and not dramatized"
+      ],
+      "must_not": [
+        "countdown widgets or shame-toggles manufacturing urgency",
+        "hiding a known constraint the visitor will hit"
+      ],
+      "budget_note": "No budget impact; an honesty band is designed text, not a card section.",
+      "evidence": "obama.org sold-out notice + restock schedule as the opening band (Webby 2025 Winner, verified); Bruno Simon 'Server currently offline. Scores can't be saved.' (SOTM Nov 2019, verified); Haven split service hours (nominee tier, labeled); KHUFU'S entry procedures (HM May 07 2026, verified); Hutstuf discount rules beside the date picker (HM Mar 07 2026, verified); Don't Board Me per-walk price arithmetic (SOTD Mar 11 2024, verified) - r2-summary.md finding 3; aligns with the corpus truth-over-polish doctrine"
+    },
+    "subject-shaped-ia": {
+      "description": "Information architecture derived from the subject's real-world shape - nav as opening hours, company as island map, huts by name, work index as homepage, drivable world - so the section system could not move to another business without collapsing. The transplant test made structural.",
+      "must": [
+        "the top-level section system names the subject's real structure (dayparts, places, objects, works) rather than a corporate template (About/Services/Contact)"
+      ],
+      "must_not": [
+        "a template IA transplanted onto the subject"
+      ],
+      "budget_note": "No budget impact. Genuinely catalog-shaped subjects (huts, games, programs) still justify their one budgeted collection per the card policy.",
+      "evidence": "Haven nav-as-opening-hours (nominee tier, labeled); KHUFU'S day-cycle section order (HM May 07 2026, verified); Madbox company-as-island-map with a public graveyard of killed projects (SOTD Oct 08 2021, verified); Hutstuf huts-by-name nav (HM Mar 07 2026, verified); Bruno Simon drivable-world portfolio (SOTM Nov 2019, verified); Obys work-index-as-homepage (build unverified, corroborating) - r2-summary.md finding 5"
+    }
+  },
+  "forbidden_defaults": [
+    "equal-height card wall",
+    "three columns under a centered hero",
+    "fake dashboard screenshot / invented product UI",
+    "pointless KPI strip (unverifiable big numbers)",
+    "stock-icon feature grid",
+    "repeated two-column zig-zag sections",
+    "unearned gradient blob background",
+    "giant testimonial card row"
+  ],
+  "composed_brief": {
+    "input": {
+      "site_type": "software-product",
+      "tone": [
+        "precise",
+        "technical",
+        "confident"
+      ],
+      "intent": "show the real ASV Agent Desk product and route developers to source, setup, and contribution without implying a signed download exists",
+      "commercial_intent": null
+    },
+    "match": "ok",
+    "style_atlas": {
+      "id": "style.saas-technical-product",
+      "name": "SaaS or Technical Product",
+      "path": "docs/style-atlas/site-type-style-atlas.md#saas-or-technical-product",
+      "site_types": [
+        "saas",
+        "technical-product",
+        "developer-tool",
+        "ai-product",
+        "b2b"
+      ],
+      "tones": [
+        "precise",
+        "confident",
+        "structured",
+        "trustworthy"
+      ],
+      "composition_directions": [
+        "product-walkthrough",
+        "annotated-proof",
+        "interactive-demo",
+        "comparison-flow"
+      ],
+      "use_patterns": [
+        "composition.non-card-content-layouts",
+        "motion.svg-line-drawing"
+      ],
+      "avoid": [
+        "fake-dashboard",
+        "icon-feature-grid",
+        "generic-gradient"
+      ]
+    },
+    "study_references": [
+      {
+        "id": "reference.saas.linear",
+        "name": "Linear",
+        "url": "https://linear.app",
+        "studio": "Linear in-house design team (Karri Saarinen, design lead; custom 'Orbiter' design system on Radix UI)",
+        "platform": "other",
+        "award_status": "curated_reference",
+        "verification": "inferred",
+        "site_type": [
+          "saas",
+          "product"
+        ],
+        "industry": [
+          "project-management",
+          "developer-tools",
+          "saas"
+        ],
+        "tone": [
+          "precise",
+          "technical",
+          "minimal",
+          "confident",
+          "keyboard-first"
+        ],
+        "complexity": "medium",
+        "commercial_intent": "high",
+        "surface": "website",
+        "summary": "Linear is the canonical dark-minimal SaaS product site: near-black background, Inter typeface, real UI as hero, no decorative elements, numbered section navigation, keyboard-first UX signals throughout. The primary reference for restrained, engineer-credible B2B SaaS marketing design.",
+        "retrieval_tags": [
+          "saas",
+          "dark-mode",
+          "minimal",
+          "keyboard-first",
+          "developer-tool",
+          "product-led",
+          "ui-as-hero",
+          "inter-font",
+          "restrained",
+          "monochrome-accent"
+        ]
+      },
+      {
+        "id": "reference.finance-business.stripe",
+        "name": "Stripe Financial Dashboard and Sigma",
+        "url": "https://stripe.com",
+        "studio": "Stripe",
+        "platform": "direct",
+        "award_status": "curated_reference",
+        "verification": "reported",
+        "site_type": [
+          "finance-business"
+        ],
+        "industry": [
+          "payments",
+          "revenue-analytics",
+          "developer-finance"
+        ],
+        "tone": [
+          "authoritative",
+          "precise",
+          "technical",
+          "infrastructure-grade"
+        ],
+        "complexity": "high",
+        "commercial_intent": "medium",
+        "surface": "application",
+        "summary": "Stripe Financial Dashboard and Sigma is the industry reference UI for payments analytics and developer-grade financial reporting, notable for its monochrome substrate with single indigo accent, three-dropdown chart controller with immediate live rendering, click-through audit anchoring on every summary number, semantic status pills with variable width, running-balance ledger in the Balances section, Billing cohort heatmap, Revenue Recognition waterfall, and Sigma SQL environment with AI-draft plus human-edit workflow. Tabular figures and ss01 digit disambiguation throughout are expert-level typographic decisions.",
+        "retrieval_tags": [
+          "period-comparison",
+          "drilldown-navigation",
+          "data-table-density",
+          "money-flow-visualization",
+          "cash-flow-visualization",
+          "alerting-anomaly",
+          "forecast-projection"
+        ]
+      },
+      {
+        "id": "reference.ecommerce.teenage-engineering",
+        "name": "Teenage Engineering",
+        "url": "https://teenage.engineering",
+        "studio": "In-house design (Teenage Engineering internal; co-founded by industrial designer Jesper Kouthoofd)",
+        "platform": "siteinspire",
+        "award_status": "curated_reference",
+        "verification": "verified",
+        "site_type": [
+          "ecommerce"
+        ],
+        "industry": [
+          "consumer electronics",
+          "musical instruments",
+          "ecommerce",
+          "dtc"
+        ],
+        "tone": [
+          "industrial-precise",
+          "minimalist",
+          "utilitarian",
+          "confident",
+          "product-worship"
+        ],
+        "complexity": "medium",
+        "commercial_intent": "high",
+        "surface": "website",
+        "summary": "Teenage Engineering is the benchmark industrial-precise ecommerce site: custom-built (non-Shopify), lowercase typography system, product-family-tree navigation with inline buy links, and documentation depth as the conversion mechanism. Anti-DTC in every convention; converts through authority earned by design and engineering credibility.",
+        "retrieval_tags": [
+          "ecommerce",
+          "dtc",
+          "electronics",
+          "instruments",
+          "industrial-precise",
+          "minimalist",
+          "custom-build",
+          "non-shopify",
+          "spec-led",
+          "documentation-trust"
+        ]
+      },
+      {
+        "id": "reference.crypto.uniswap",
+        "name": "Uniswap",
+        "url": "https://uniswap.org",
+        "studio": "In-house (Uniswap Labs design team; blog and governance sites self-produced)",
+        "platform": "direct",
+        "award_status": "curated_reference",
+        "verification": "verified",
+        "site_type": [
+          "crypto",
+          "editorial"
+        ],
+        "industry": [
+          "crypto",
+          "DeFi",
+          "protocol",
+          "developer-tools"
+        ],
+        "tone": [
+          "technical",
+          "confident",
+          "community-first",
+          "matter-of-fact"
+        ],
+        "complexity": "medium",
+        "commercial_intent": "medium",
+        "surface": "website",
+        "summary": "Uniswap is the largest DEX by volume ($4T+ lifetime) and treats its protocol as infrastructure by redirecting uniswap.org directly to the swap app. The brand is anchored by Uniswap pink deployed with extreme restraint. The blog at blog.uniswap.org is the primary editorial surface and publishes major governance proposals (UNIfication, Nov 2025) as designed editorial artifacts with ToC, diagrams, and named authorship. The swap interface itself is the product explanation model.",
+        "retrieval_tags": [
+          "crypto",
+          "DeFi",
+          "protocol",
+          "AMM",
+          "swap",
+          "governance",
+          "editorial",
+          "pink",
+          "Ethereum",
+          "Unichain",
+          "Optimism",
+          "institutional"
+        ]
+      },
+      {
+        "id": "reference.agency.active-theory",
+        "name": "Active Theory V6",
+        "url": "https://activetheory.net",
+        "studio": "Active Theory",
+        "platform": "awwwards",
+        "award_status": "site-of-the-day",
+        "verification": "verified",
+        "site_type": [
+          "studio",
+          "agency"
+        ],
+        "industry": [
+          "creative-technology",
+          "interactive-experience",
+          "production"
+        ],
+        "tone": [
+          "futuristic",
+          "immersive",
+          "game-engine",
+          "alien",
+          "technical"
+        ],
+        "complexity": "experimental",
+        "commercial_intent": "low",
+        "surface": "website",
+        "summary": "Active Theory V6 is the canonical example of a studio site where the portfolio IS the product: a real-time 3D environment on their proprietary Hydra engine. Spatial navigation (scroll-as-camera-dolly, no nav bar) and AI-powered navigation are genuinely novel. For studios with deep 3D/WebGL capability who want the site to be the proof.",
+        "retrieval_tags": [
+          "webgl",
+          "3d-environment",
+          "spatial-navigation",
+          "custom-engine",
+          "particle-system",
+          "agency-portfolio",
+          "capability-proof",
+          "experimental-navigation",
+          "ai-chat-navigation"
+        ]
+      }
+    ],
+    "recommended_patterns": [
+      {
+        "id": "pattern.motion-grammar.speed-as-aesthetic",
+        "name": "Speed-Is-The-Motion",
+        "category": "motion-grammar",
+        "summary": "Use when the product's core value includes speed, responsiveness, or efficiency. Inappropriate for brand-led, luxury, or editorial contexts where pacing conveys craft.",
+        "exemplars": [
+          "reference.saas.linear"
+        ],
+        "retrieval_tags": [
+          "dark-mode",
+          "keyboard-first",
+          "minimal",
+          "motion",
+          "motion-grammar",
+          "saas",
+          "speed",
+          "the"
+        ]
+      },
+      {
+        "id": "pattern.navigation-behavior.product-family-tree-nav",
+        "name": "Product Family Tree as Primary Navigation",
+        "category": "navigation-behavior",
+        "summary": "For hardware or equipment brands with defined accessory ecosystems, flatten the accessory cross-sell into the primary navigation rather than relying on PDP recommendation modules. Best when accessory SKU count is manageable (under 20).",
+        "exemplars": [
+          "reference.ecommerce.teenage-engineering"
+        ],
+        "retrieval_tags": [
+          "dtc",
+          "ecommerce",
+          "electronics",
+          "family",
+          "instruments",
+          "navigation",
+          "navigation-behavior",
+          "primary",
+          "product",
+          "tree"
+        ]
+      },
+      {
+        "id": "pattern.brand-reveal-mechanism.pink-as-category-anchor",
+        "name": "Single Signature Color as Category Ownership",
+        "category": "brand-reveal-mechanism",
+        "summary": "Use a single signature color as both brand anchor and primary CTA when the product is mature enough to own that color in its category. Works best when the color is genuinely distinctive in the category (Uniswap pink in DeFi, Robinhood green in retail trading). Requires significant brand longevity for the color to become category shorthand; not appropriate for new entrants who have not yet built color recognition.",
+        "exemplars": [
+          "reference.crypto.uniswap"
+        ],
+        "retrieval_tags": [
+          "AMM",
+          "DeFi",
+          "brand-reveal-mechanism",
+          "category",
+          "color",
+          "crypto",
+          "ownership",
+          "protocol",
+          "signature",
+          "single"
+        ]
+      },
+      {
+        "id": "pattern.content-density-strategy.section-numbering",
+        "name": "Numbered Chapter Navigation",
+        "category": "content-density-strategy",
+        "summary": "For product-led marketing sites where the product has a clear workflow sequence. Don't use for brand storytelling or editorial sites where narrative flow matters more than navigation.",
+        "exemplars": [
+          "reference.saas.linear"
+        ],
+        "retrieval_tags": [
+          "chapter",
+          "content-density-strategy",
+          "dark-mode",
+          "keyboard-first",
+          "minimal",
+          "navigation",
+          "numbered",
+          "saas"
+        ]
+      },
+      {
+        "id": "pattern.data-table-density.stripe-semantic-status-pill",
+        "name": "Semantic Status Pill with Variable Width",
+        "category": "data-table-density",
+        "summary": "Use this pattern in any high-volume financial list where status is the most operationally important field. Position pills in columns 2-3 (not the last column) so they fall in the primary scan path. Use variable width with text content rather than fixed-width pills. Limit to 3-4 distinct status states before the barcode pattern breaks down.",
+        "exemplars": [
+          "reference.finance-business.stripe"
+        ],
+        "retrieval_tags": [
+          "data-table-density",
+          "drilldown-navigation",
+          "money-flow-visualization",
+          "period-comparison",
+          "pill",
+          "semantic",
+          "status",
+          "variable",
+          "width",
+          "with"
+        ]
+      },
+      {
+        "id": "pattern.drilldown-navigation.stripe-click-through-audit-anchor",
+        "name": "Click-Through Audit Anchor",
+        "category": "drilldown-navigation",
+        "summary": "Implement clickable audit anchors on every summary financial figure in reports and dashboards. The click should open either a side panel (for moderate detail) or a full page (for complex detail) showing the underlying records. Apply a consistent visual affordance (subtle underline or cursor change on hover) to signal that numbers are interactive across all surfaces.",
+        "exemplars": [
+          "reference.finance-business.stripe"
+        ],
+        "retrieval_tags": [
+          "anchor",
+          "audit",
+          "click",
+          "data-table-density",
+          "drilldown-navigation",
+          "money-flow-visualization",
+          "period-comparison",
+          "through"
+        ]
+      },
+      {
+        "id": "pattern.editorial-pacing.governance-as-editorial-artifact",
+        "name": "Governance Proposal as Designed Editorial Artifact",
+        "category": "editorial-pacing",
+        "summary": "Use for any DAO, protocol, or community-governed product where governance communication is a trust-building surface. The investment in editorial quality for governance content pays dividends in community legitimacy and media coverage. Requires a CMS that supports rich text, inline images, and anchor-linked headings; plain-text governance posts on Discourse or GitHub lack the brand authority of a designed publication.",
+        "exemplars": [
+          "reference.crypto.uniswap"
+        ],
+        "retrieval_tags": [
+          "AMM",
+          "DeFi",
+          "artifact",
+          "crypto",
+          "designed",
+          "editorial",
+          "editorial-pacing",
+          "governance",
+          "proposal",
+          "protocol"
+        ]
+      },
+      {
+        "id": "pattern.entry-loading-sequence.capability-first-environment-reveal",
+        "name": "Capability-First Environment Reveal",
+        "category": "entry-loading-sequence",
+        "summary": "Use when the core content is a technical artifact users need time to prepare for. Keep proportional to load time (3s assembly is a feature; 15s is abandonment). Pair with a genuine progress indicator. Not for transactional/editorial.",
+        "exemplars": [
+          "reference.agency.active-theory"
+        ],
+        "retrieval_tags": [
+          "3d-environment",
+          "capability",
+          "custom-engine",
+          "entry-loading-sequence",
+          "environment",
+          "first",
+          "reveal",
+          "spatial-navigation",
+          "webgl"
+        ]
+      }
+    ],
+    "avoid": {
+      "named_anti_patterns": [
+        {
+          "id": "pattern.anti-pattern.alternating-zigzag-rows",
+          "name": "Endless Zig-Zag Feature Rows",
+          "category": "anti-pattern",
+          "summary": "Endless Zig-Zag Feature Rows — Image-left/text-right alternating with text-left/image-right, repeated identically down the whole page. Reject it unless a single split-narrative section used once for genuine contrast, not as the page's whole structure Replace with: bento grid of autonomous cards for breadth, section rhythm that varies height/width/density, narrative sequencing with setup -> tension -> payoff.",
+          "exemplars": [
+            "reference.fintech.stripe"
+          ],
+          "retrieval_tags": [
+            "anti-pattern",
+            "alternating-zigzag-rows",
+            "avoid",
+            "downrank",
+            "generic-default"
+          ]
+        },
+        {
+          "id": "pattern.anti-pattern.centered-vague-hero",
+          "name": "Centered Hero With Vague Headline",
+          "category": "anti-pattern",
+          "summary": "Centered Hero With Vague Headline — A centered one-liner like 'Build better, faster' over a subtle gradient with two buttons, telling you nothing. Reject it unless the page genuinely has one dominant message and the hero is specific, owned, and supported by real media Replace with: a specific value claim plus real product media, type-led composition with an owned voice, a playable or annotated first screen.",
+          "exemplars": [
+            "reference.saas.linear",
+            "reference.fintech.mercury"
+          ],
+          "retrieval_tags": [
+            "anti-pattern",
+            "centered-vague-hero",
+            "avoid",
+            "downrank",
+            "generic-default"
+          ]
+        },
+        {
+          "id": "pattern.anti-pattern.fake-dashboard",
+          "name": "Fake Dashboard / Invented Product UI",
+          "category": "anti-pattern",
+          "summary": "Fake Dashboard / Invented Product UI — A decorative mock dashboard, KPI tiles, or product chrome invented only to look 'producty', wired to nothing. Reject it unless you are showing the actual product ui at a realistic state (see linear's ui-as-hero) Replace with: actual product screenshots at a real workflow state, an embedded live demo or playable slice, an annotated real screen.",
+          "exemplars": [
+            "reference.saas.linear",
+            "reference.devtool.resend"
+          ],
+          "retrieval_tags": [
+            "anti-pattern",
+            "fake-dashboard",
+            "avoid",
+            "downrank",
+            "generic-default"
+          ]
+        },
+        {
+          "id": "pattern.anti-pattern.generic-card-wall",
+          "name": "Generic Card Wall",
+          "category": "anti-pattern",
+          "summary": "Generic Card Wall — A grid of equal-height, equal-weight cards (icon + heading + blurb) used as the default container for everything. Reject it unless the content is genuinely a catalog, pricing set, search result, or collection of independent comparable objects Replace with: proof-ladder (claim -> evidence -> example -> case -> CTA), process-spine / timeline, editorial section rhythm with one dominant element per viewport, annotated demo.",
+          "exemplars": [
+            "reference.saas.linear",
+            "reference.editorial.the-pudding"
+          ],
+          "retrieval_tags": [
+            "anti-pattern",
+            "generic-card-wall",
+            "avoid",
+            "downrank",
+            "generic-default"
+          ]
+        },
+        {
+          "id": "pattern.anti-pattern.gradient-blob-hero",
+          "name": "Unearned Gradient Blob Hero",
+          "category": "anti-pattern",
+          "summary": "Unearned Gradient Blob Hero — A centered headline floating over a random purple-to-pink mesh gradient or blurred blob with no meaning. Reject it unless a gradient is a deliberate, owned brand device used consistently (e.g. stripe's signature wave), not a default backdrop Replace with: real product media or photography, type-led composition where the headline IS the visual, an owned, consistent material/motion system.",
+          "exemplars": [
+            "reference.fintech.stripe",
+            "reference.portfolio.rauno-freiberg"
+          ],
+          "retrieval_tags": [
+            "anti-pattern",
+            "gradient-blob-hero",
+            "avoid",
+            "downrank",
+            "generic-default"
+          ]
+        },
+        {
+          "id": "pattern.anti-pattern.stock-icon-feature-grid",
+          "name": "Stock-Icon Feature Grid",
+          "category": "anti-pattern",
+          "summary": "Stock-Icon Feature Grid — A 3x2 grid of generic line icons (cloud, shield, rocket, gear) each above a one-line feature. Reject it unless icons are a consistent, custom, functional system that genuinely aids scanning Replace with: product-explanation model with real UI or diagrams, bento cards each with a real visual, prose with one strong supporting image.",
+          "exemplars": [
+            "reference.devtool.resend"
+          ],
+          "retrieval_tags": [
+            "anti-pattern",
+            "stock-icon-feature-grid",
+            "avoid",
+            "downrank",
+            "generic-default"
+          ]
+        },
+        {
+          "id": "pattern.anti-pattern.testimonial-card-row",
+          "name": "Giant Testimonial Card Row",
+          "category": "anti-pattern",
+          "summary": "Giant Testimonial Card Row — A carousel or row of identical quote cards with a 5-star rating and a stock avatar. Reject it unless quotes are from named, verifiable people/companies tied to a specific outcome Replace with: named-executive proof at display scale (see Cursor), an embedded case study with a concrete result, a single strong quote set as editorial type.",
+          "exemplars": [
+            "reference.ai.cursor"
+          ],
+          "retrieval_tags": [
+            "anti-pattern",
+            "testimonial-card-row",
+            "avoid",
+            "downrank",
+            "generic-default"
+          ]
+        },
+        {
+          "id": "pattern.anti-pattern.vanity-kpi-strip",
+          "name": "Vanity KPI / Stat Strip",
+          "category": "anti-pattern",
+          "summary": "Vanity KPI / Stat Strip — A row of big numbers ('10,000+ happy users', '99% love it') with no source, used as decoration. Reject it unless the numbers are operationally verifiable infrastructure metrics with a source (see stripe's stat-anchoring) Replace with: a stat-anchor block of verifiable metrics with a linked source, a single specific outcome in a real case study, named, specific customer proof.",
+          "exemplars": [
+            "reference.fintech.stripe",
+            "reference.editorial.our-world-in-data"
+          ],
+          "retrieval_tags": [
+            "anti-pattern",
+            "vanity-kpi-strip",
+            "avoid",
+            "downrank",
+            "generic-default"
+          ]
+        }
+      ],
+      "style_atlas_avoid": [
+        "fake-dashboard",
+        "icon-feature-grid",
+        "generic-gradient"
+      ]
+    },
+    "design_note": {
+      "site_type": "software-product",
+      "tone": [
+        "precise",
+        "technical",
+        "confident"
+      ],
+      "primary_intent": "show the real ASV Agent Desk product and route developers to source, setup, and contribution without implying a signed download exists",
+      "commercial_intent": "",
+      "style_atlas_match": "SaaS or Technical Product",
+      "selected_composition": "product-walkthrough",
+      "composition_options": [
+        "product-walkthrough",
+        "annotated-proof",
+        "interactive-demo",
+        "comparison-flow"
+      ],
+      "borrow_these_moves": [
+        {
+          "id": "pattern.motion-grammar.speed-as-aesthetic",
+          "name": "Speed-Is-The-Motion"
+        },
+        {
+          "id": "pattern.navigation-behavior.product-family-tree-nav",
+          "name": "Product Family Tree as Primary Navigation"
+        },
+        {
+          "id": "pattern.brand-reveal-mechanism.pink-as-category-anchor",
+          "name": "Single Signature Color as Category Ownership"
+        }
+      ],
+      "study_these_sites": [
+        {
+          "id": "reference.saas.linear",
+          "name": "Linear",
+          "url": "https://linear.app"
+        },
+        {
+          "id": "reference.finance-business.stripe",
+          "name": "Stripe Financial Dashboard and Sigma",
+          "url": "https://stripe.com"
+        },
+        {
+          "id": "reference.ecommerce.teenage-engineering",
+          "name": "Teenage Engineering",
+          "url": "https://teenage.engineering"
+        }
+      ],
+      "reject_these_defaults": [
+        "fake-dashboard",
+        "icon-feature-grid",
+        "generic-gradient"
+      ],
+      "why_not_cards_or_columns": "Use cards only for genuinely independent, comparable, repeated objects; otherwise prefer the composition above. See anti-pattern.generic-card-wall.",
+      "responsive_note": "Re-think the composition per breakpoint; do not shrink desktop onto mobile (pattern.responsive-transformation.*).",
+      "accessibility_note": "Honor prefers-reduced-motion, keyboard focus, and provide non-happy-path states (pattern.loading-empty-error-states.*)."
+    },
+    "known_site_types": [
+      "accounting",
+      "admin",
+      "advocacy",
+      "agency",
+      "ai-product",
+      "analytics",
+      "architecture",
+      "art",
+      "art-direction",
+      "b2b",
+      "campaign",
+      "case-study",
+      "cause",
+      "clinic",
+      "community",
+      "consultant",
+      "consulting",
+      "contractor",
+      "cooking",
+      "course",
+      "creative-brand",
+      "creator",
+      "crypto",
+      "cultural",
+      "dashboard",
+      "designer",
+      "developer",
+      "developer-tool",
+      "documentation-learning",
+      "ecommerce",
+      "editorial",
+      "education",
+      "fashion",
+      "finance",
+      "finance-business",
+      "finance-personal",
+      "fintech",
+      "food",
+      "game",
+      "gov",
+      "hardware",
+      "healthcare",
+      "hospitality",
+      "interactive",
+      "internal-tool",
+      "learning-platform",
+      "legal",
+      "local-business",
+      "luxury",
+      "music",
+      "nonprofit",
+      "personal-brand",
+      "playful-brand",
+      "portfolio",
+      "product",
+      "professional-services",
+      "recipe",
+      "restaurant",
+      "resume",
+      "retail",
+      "saas",
+      "service-business",
+      "solo-founder",
+      "studio",
+      "technical-product",
+      "toy",
+      "training",
+      "travel",
+      "webgl-experience"
+    ]
+  },
+  "design_note_template": "Site type:\nAudience:\nPrimary action:\nTone:\nSelected composition:\nWhy this composition fits:\nStyle atlas match:\nReference/pattern moves borrowed (max 3):\nCard budget for this site type / cards used / justification if > 0:\nForbidden defaults rejected (from the list of 8):\nProduct imagery provenance: captured-from-product @ <ref> | live embed | labeled-simulated | none\nMotion behavior:\nResponsive behavior (mobile composed, not squeezed):\nAccessibility fallback (reduced-motion, keyboard, no-JS):\nPerformance risk:",
+  "rubric_skeleton": "A1 Viewport dominance:      _/5   (weight 20%)\nA2 Section rhythm:          _/5   (weight 15%)\nA3 Card justification:      _/5   (weight 15%)\nA4 Type:                    _/5   (weight 15%)\nA5 Color:                   _/5   (weight 10%)\nA6 Motion:                  _/5   (weight 10%)\nA7 Mobile composition:      _/5   (weight 15%)\nWeighted overall:           _.__/5.0   (pass >= 4.0, no axis <= 2)\nHard-fails triggered:       [none | HF-1..HF-9 with evidence]\nVerdict:                    PASS | FAIL (reason)\n-- Full axis criteria + hard-fail signatures: 00_Design_Gate/WDI-011_*.md\n-- Store as wdi-011-score-sheet.md with the build; design_gate.py verify checks it exists."
+}

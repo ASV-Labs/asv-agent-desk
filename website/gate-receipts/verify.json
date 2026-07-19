@@ -1,0 +1,9 @@
+{
+  "build_dir": "_asv-agent-desk-public",
+  "pages": [
+    "index.html"
+  ],
+  "mode": "static-heuristics (no rendering; necessary, never sufficient)",
+  "findings": [],
+  "exit": 0
+}
